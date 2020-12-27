@@ -8,6 +8,7 @@ using System.ComponentModel.DataAnnotations;
 using RESTfulAPI.Models;
 using RESTfulAPI.Repository;
 using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.AspNetCore.Http;
 
 namespace RESTfulAPI.Controllers
 {
@@ -19,6 +20,8 @@ namespace RESTfulAPI.Controllers
         public IActionResult GetAll() => Ok(ElephantRepository.GetAll());
 
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult GetOne([FromRoute] int id)
         {
             Elephant elephant = ElephantRepository.GetOne(id);
@@ -38,6 +41,8 @@ namespace RESTfulAPI.Controllers
         }
 
         [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult Remove(int id)
         {
             Elephant elephant = ElephantRepository.Remove(id);
@@ -50,6 +55,8 @@ namespace RESTfulAPI.Controllers
         }
 
         [HttpPatch("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult Update(int id, JsonPatchDocument<Elephant> jsonPatch)
         {
             Elephant elephant = ElephantRepository.GetOne(id);
