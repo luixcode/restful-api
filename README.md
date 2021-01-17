@@ -1,9 +1,6 @@
 # restful-api
 RESTful API demo built with ASP.NET Core
 
-## Description
-Project developed in order to put the following knowledge into practice:
-
 * How to validate data
 * How to work with the HTTP PATCH method
 * How to create custom validation attributes
